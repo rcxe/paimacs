@@ -1,0 +1,26 @@
+(when (and (boundp 'load-path) load-file-name)
+  (add-to-list 'load-path
+             (expand-file-name "paimacs" user-emacs-directory))
+    (add-to-list 'load-path
+             (expand-file-name "nano" user-emacs-directory)))
+
+(require 'paimacs-package-manager)
+(require 'paimacs-nano)
+(require 'paimacs-layout)
+(require 'paimacs-sane)
+(require 'paimacs-buffer)
+(require 'paimacs-appearance)
+(require 'paimacs-modeline)
+(require 'paimacs-lsp)
+(require 'paimacs-completion)
+(require 'paimacs-vertico)
+(require 'paimacs-indent)
+(require 'paimacs-normie)
+(require 'paimacs-dashboard)
+(require 'paimacs-diagnostics)
+(require 'paimacs-treesitter)
+(require 'paimacs-help)
+(require 'paimacs-git)
+(require 'paimacs-files)
+(require 'paimacs-bindings)
+
