@@ -14,10 +14,10 @@
   (corfu-history-mode)
   (corfu-popupinfo-mode)
   :bind (:map corfu-map
-	      ("TAB" . corfu-next)
-	      ([tab] . corfu-next)
-	      ("S-TAB" . corfu-previous)
-	      ([backtab] . corfu-previous)))
+              ("TAB" . corfu-next)
+              ([tab] . corfu-next)
+              ("S-TAB" . corfu-previous)
+              ([backtab] . corfu-previous)))
 
 (use-package cape
   :ensure t

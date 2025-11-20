@@ -8,7 +8,7 @@
   (if vc-mode
       (let ((backend (vc-backend buffer-file-name)))
         (concat "#" (substring-no-properties vc-mode
-					     (+ (if (eq backend 'Hg) 2 3) 2))))  nil))
+                                             (+ (if (eq backend 'Hg) 2 3) 2))))  nil))
 
 (defun paimacs-mode-name ()
   (if (listp mode-name) (car mode-name) mode-name))
@@ -33,60 +33,60 @@
          (window        (get-buffer-window (current-buffer)))
          (space-up       +0.15)
          (space-down     -0.20)
-	 (prefix (cond ((string= status "RO")
-			(propertize (if (window-dedicated-p)" -- " " RO ")
+         (prefix (cond ((string= status "RO")
+                        (propertize (if (window-dedicated-p)" -- " " RO ")
                                     'face 'nano-face-header-popout))
                        ((string= status "**")
-			(propertize (if (window-dedicated-p)" -- " " ** ")
+                        (propertize (if (window-dedicated-p)" -- " " ** ")
                                     'face 'nano-face-header-critical))
                        ((string= status "RW")
-			(propertize (if (window-dedicated-p)" -- " " RW ")
+                        (propertize (if (window-dedicated-p)" -- " " RW ")
                                     'face 'nano-face-header-faded))
                        (t (propertize status 'face 'nano-face-header-popout))))
          (left (concat
                 (propertize " "  'face 'nano-face-header-default
-			    'display `(raise ,space-up))
+                            'display `(raise ,space-up))
                 (propertize name 'face 'nano-face-header-strong)
                 (propertize " "  'face 'nano-face-header-default
-			    'display `(raise ,space-down))
-		(propertize primary 'face 'nano-face-header-default)))
+                            'display `(raise ,space-down))
+                (propertize primary 'face 'nano-face-header-default)))
          (right (concat secondary " "))
          (available-width (- (window-total-width) 
-			     (length prefix) (length left) (length right)
-			     (/ (window-right-divider-width) char-width)))
-	 (available-width (max 1 available-width)))
+                             (length prefix) (length left) (length right)
+                             (/ (window-right-divider-width) char-width)))
+         (available-width (max 1 available-width)))
     (concat prefix
-	    left
-	    (propertize (make-string available-width ?\ )
+            left
+            (propertize (make-string available-width ?\ )
                         'face 'nano-face-header-default)
-	    (propertize right 'face `(:inherit nano-face-header-default
-					       :foreground ,nano-color-faded)))))
+            (propertize right 'face `(:inherit nano-face-header-default
+                                               :foreground ,nano-color-faded)))))
 
 ;; ---------------------------------------------------------------------
 (setq Info-use-header-line nil)
 (defun paimacs-modeline-info-breadcrumbs ()
   (let ((nodes (Info-toc-nodes Info-current-file))
         (cnode Info-current-node)
-	(node Info-current-node)
+        (node Info-current-node)
         (crumbs ())
         (depth Info-breadcrumbs-depth)
-	line)
+        line)
     (while  (> depth 0)
       (setq node (nth 1 (assoc node nodes)))
       (if node (push node crumbs))
       (setq depth (1- depth)))
     (setq crumbs (cons "Top" (if (member (pop crumbs) '(nil "Top"))
-			         crumbs (cons nil crumbs))))
+                                 crumbs (cons nil crumbs))))
     (forward-line 1)
     (dolist (node crumbs)
       (let ((text
-	     (if (not (equal node "Top")) node
-	       (format "%s"
-		       (if (stringp Info-current-file)
-			   (file-name-sans-extension
-			    (file-name-nondirectory Info-current-file))
-			 Info-current-file)))))
-	(setq line (concat line (if (null line) "" " > ")
+             (if (not (equal node "Top")) node
+               (format "%s"
+                       (if (stringp Info-current-file)
+                           (file-name-sans-extension
+                            (file-name-nondirectory Info-current-file))
+                         Info-current-file)))))
+        (setq line (concat line (if (null line) "" " > ")
                            (if (null node) "..." text)))))
     (if (and cnode (not (equal cnode "Top")))
         (setq line (concat line (if (null line) "" " > ") cnode)))
@@ -133,20 +133,20 @@
 
 (defun paimacs-modeline-docview-mode ()
   (let ((buffer-name (format-mode-line "%b"))
-	(mode-name   (paimacs-mode-name))
-	(branch      (vc-branch))
-	(page-number (concat
-		      (number-to-string (doc-view-current-page)) "/"
-		      (or (ignore-errors
-			    (number-to-string (doc-view-last-page-number)))
-			  "???"))))
+        (mode-name   (paimacs-mode-name))
+        (branch      (vc-branch))
+        (page-number (concat
+                      (number-to-string (doc-view-current-page)) "/"
+                      (or (ignore-errors
+                            (number-to-string (doc-view-last-page-number)))
+                          "???"))))
     (paimacs-modeline-compose
      (paimacs-modeline-status)
      buffer-name
      (concat "(" mode-name
-	     (if branch (concat ", "
-				(propertize branch 'face 'italic)))
-	     ")" )
+             (if branch (concat ", "
+                                (propertize branch 'face 'italic)))
+             ")" )
      page-number)))
 
 ;; ---------------------------------------------------------------------
@@ -155,20 +155,20 @@
 
 (defun paimacs-modeline-pdf-view-mode ()
   (let ((buffer-name (format-mode-line "%b"))
-	(mode-name   (paimacs-mode-name))
-	(branch      (vc-branch))
-	(page-number (concat
-		      (number-to-string (pdf-view-current-page)) "/"
-		      (or (ignore-errors
-			    (number-to-string (pdf-cache-number-of-pages)))
-			  "???"))))
+        (mode-name   (paimacs-mode-name))
+        (branch      (vc-branch))
+        (page-number (concat
+                      (number-to-string (pdf-view-current-page)) "/"
+                      (or (ignore-errors
+                            (number-to-string (pdf-cache-number-of-pages)))
+                          "???"))))
     (paimacs-modeline-compose
      "RW"
      buffer-name
      (concat "(" mode-name
-	     (if branch (concat ", "
-				(propertize branch 'face 'italic)))
-	     ")" )
+             (if branch (concat ", "
+                                (propertize branch 'face 'italic)))
+             ")" )
      page-number)))
 
 ;; ---------------------------------------------------------------------
@@ -259,20 +259,20 @@
 
 (defun paimacs-modeline-default-mode ()
   (let* ((buffer-name (format-mode-line "%b"))
-	 (mode-name   (paimacs-mode-name))
-	 (branch      (vc-branch))
-	 (icon        (paimacs-modeline-file-icon))
-	 (project     (paimacs-modeline-project-name))
-	 (position    (format-mode-line "%l:%c")))
+         (mode-name   (paimacs-mode-name))
+         (branch      (vc-branch))
+         (icon        (paimacs-modeline-file-icon))
+         (project     (paimacs-modeline-project-name))
+         (position    (format-mode-line "%l:%c")))
     (paimacs-modeline-compose 
      (paimacs-modeline-status)
      (concat icon buffer-name)
      (concat "(" mode-name
-	     (if branch (concat ", "
-				(propertize branch 'face 'italic)))
-	     ")" )
+             (if branch (concat ", "
+                                (propertize branch 'face 'italic)))
+             ")" )
      (concat (if project (concat "[" project "] ") "")
-	     position))))
+             position))))
 
 ;; ---------------------------------------------------------------------
 (defun paimacs-modeline-status ()
@@ -287,17 +287,17 @@
   "Install a header line whose content is dependend on the major mode"
   (interactive)
   (setq-default header-line-format
-		'((:eval
-		   (cond ((paimacs-modeline-prog-mode-p)            (paimacs-modeline-default-mode))
-			 ((paimacs-modeline-info-mode-p)            (paimacs-modeline-info-mode))
-			 ((paimacs-modeline-term-mode-p)            (paimacs-modeline-term-mode))
-			 ((paimacs-modeline-vterm-mode-p)           (paimacs-modeline-term-mode))
-			 ((paimacs-modeline-text-mode-p)            (paimacs-modeline-default-mode))
-			 ((paimacs-modeline-pdf-view-mode-p)        (paimacs-modeline-pdf-view-mode))
-			 ((paimacs-modeline-docview-mode-p)         (paimacs-modeline-docview-mode))
-			 ((paimacs-modeline-completion-list-mode-p) (paimacs-modeline-completion-list-mode))
-			 ((paimacs-modeline-nano-help-mode-p)       (paimacs-modeline-nano-help-mode))
-			 (t                                      (paimacs-modeline-default-mode)))))))
+                '((:eval
+                   (cond ((paimacs-modeline-prog-mode-p)            (paimacs-modeline-default-mode))
+                         ((paimacs-modeline-info-mode-p)            (paimacs-modeline-info-mode))
+                         ((paimacs-modeline-term-mode-p)            (paimacs-modeline-term-mode))
+                         ((paimacs-modeline-vterm-mode-p)           (paimacs-modeline-term-mode))
+                         ((paimacs-modeline-text-mode-p)            (paimacs-modeline-default-mode))
+                         ((paimacs-modeline-pdf-view-mode-p)        (paimacs-modeline-pdf-view-mode))
+                         ((paimacs-modeline-docview-mode-p)         (paimacs-modeline-docview-mode))
+                         ((paimacs-modeline-completion-list-mode-p) (paimacs-modeline-completion-list-mode))
+                         ((paimacs-modeline-nano-help-mode-p)       (paimacs-modeline-nano-help-mode))
+                         (t                                      (paimacs-modeline-default-mode)))))))
 
 ;; ---------------------------------------------------------------------
 (defun paimacs-modeline-update-windows ()

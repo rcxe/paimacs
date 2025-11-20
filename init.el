@@ -23,4 +23,4 @@
 (require 'paimacs-git)
 (require 'paimacs-files)
 (require 'paimacs-bindings)
-
+(require 'paimacs-presence)

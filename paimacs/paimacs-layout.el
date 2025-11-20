@@ -2,9 +2,8 @@
       (append (list
                '(vertical-scroll-bars . nil)
                '(internal-border-width . 24)
-	       '(bottom-divider-width . 0)
-	       '(right-divider-width . 0)
-               '(undecorated-round . t)
+               '(bottom-divider-width . 0)
+               '(right-divider-width . 0)
                '(left-fringe    . 1)
                '(right-fringe   . 1)
                '(tool-bar-lines . 0)

@@ -752,6 +752,31 @@ function is a convenience wrapper used by `describe-package-1'."
     (set-face 'company-tooltip-annotation                                    'nano-face-default)
     (set-face 'company-tooltip-annotation-selection        '(nano-face-strong nano-face-subtle))))
 
+(defun nano-theme--corfu ()
+  "Apply Nano theme colors to Corfu faces."
+  (custom-set-faces
+   `(corfu-default        ((t (:background ,nano-color-background :foreground ,nano-color-foreground))))
+   `(corfu-current        ((t (:background ,nano-color-highlight :foreground ,nano-color-salient))))
+   `(corfu-border         ((t (:background ,nano-color-highlight))))
+   `(corfu-annotations    ((t (:foreground ,nano-color-faded))))
+   `(corfu-bar            ((t (:background ,nano-color-highlight))))
+   `(corfu-scrollbar      ((t (:background ,nano-color-faded))))
+   `(corfu-menu           ((t (:background ,nano-color-subtle))))
+   `(corfu-candidate      ((t (:background ,nano-color-popout :foreground ,nano-color-background))))))
+
+(defun nano-theme--flymake ()
+  "Apply Nano theme colors to Flymake and Sideline faces."
+  (let ((error-color   nano-color-critical)
+        (warning-color nano-color-popout)
+        (echo-fg       nano-color-faded))
+    (custom-set-faces
+     `(flymake-error        ((t (:underline (:color ,error-color) :background nil))))
+     `(flymake-error-echo   ((t (:foreground ,echo-fg :background nil))))
+     `(sideline-flymake-error ((t (:foreground ,error-color :background nil))))
+     `(flymake-warning      ((t (:underline (:color ,warning-color) :background nil))))
+     `(flymake-warning-echo ((t (:foreground ,echo-fg :background nil))))
+     `(sideline-flymake-warning ((t (:foreground ,warning-color :background nil)))))))
+
 (defun nano-theme ()
   "Derive many, many faces from the core nano faces."
   (nano-theme--basics)
@@ -785,6 +810,8 @@ function is a convenience wrapper used by `describe-package-1'."
   (nano-theme--helm-ff)
   (nano-theme--helm-grep)
   (nano-theme--hl-line)
+  (nano-theme--corfu)
+  (nano-theme--flymake)
   (nano-theme--company))
 
 (defun nano-refresh-theme ()

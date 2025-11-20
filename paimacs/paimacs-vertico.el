@@ -109,7 +109,7 @@
 (use-package marginalia
   :ensure t
   :bind (:map minibuffer-local-map
-	      ("M-A" . marginalia-cycle))
+              ("M-A" . marginalia-cycle))
   :init
   (marginalia-mode))
 

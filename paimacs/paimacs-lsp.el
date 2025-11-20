@@ -17,8 +17,8 @@
               ("C-c l h" . eldoc))
   :config
   (add-to-list 'eglot-server-programs
-	       '(rust-ts-mode . ("rust-analyzer" :initializationOptions
-				 (:procMacro (:enable t)
+               '(rust-ts-mode . ("rust-analyzer" :initializationOptions
+                                 (:procMacro (:enable t)
                                              :cargo (:buildScripts (:enable t)
                                                                    :features
                                                                    "all"))))
