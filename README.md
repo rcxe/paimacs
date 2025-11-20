@@ -2,11 +2,20 @@
 
 wip newbie-friendly emacs distribution
 
+### screenshots
+
+<div>
+  <img src="./github/welcome.png" width=47.5%>
+  <img src="./github/c.png"  width=47.5%>
+</div>
+
 ### todo
 
 - [ ] clean up the codebase
 - [ ] `expand-region`
 - [ ] `rainbow-delimiters`
+- [ ] auto formatting
+- [ ] themed completing popup
 
 ### installation
 
