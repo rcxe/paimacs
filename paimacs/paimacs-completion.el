@@ -13,6 +13,9 @@
   (global-corfu-mode)
   (corfu-history-mode)
   (corfu-popupinfo-mode)
+  :config
+  (global-set-key (kbd "C-SPC") #'complete-symbol)
+  (global-set-key (kbd "M-SPC") #'set-mark-command)
   :bind (:map corfu-map
               ("TAB" . corfu-next)
               ([tab] . corfu-next)

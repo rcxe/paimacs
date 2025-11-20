@@ -822,7 +822,6 @@ Calls \(nano-faces\) and \(nano-theme\) sequentially."
     (nano-faces)
     (nano-theme)))
 
-
 (defun nano-toggle-theme ()
   "Function to interactively toggle between light and dark nano themes.
 Requires both to be loaded in order to work."
