@@ -5,8 +5,8 @@ wip newbie-friendly emacs distribution
 ### screenshots
 
 <div>
-  <img src="./.github/welcome.png" width=47.5%>
-  <img src="./.github/c.png"  width=47.5%>
+  <img src="./.github/welcome.png" width=75%>
+  <img src="./.github/c.png" width=75%>
 </div>
 
 ### todo
@@ -20,7 +20,7 @@ wip newbie-friendly emacs distribution
 ### installation
 
 ```bash
-git clone https://github.com/fukkai/paimacs ~/.config/emacs
+git clone https://github.com/rcxe/paimacs ~/.emacs.d
 ```
 
 ### keybindings

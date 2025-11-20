@@ -5,13 +5,7 @@
   :defer 20
   :custom
   (blamer-idle-time 0.3)
-  (blamer-min-offset 70)
-  :custom-face
-  (blamer-face ((t :foreground "#7a88cf"
-                   :background nil
-                   :height 140
-                   :italic t)))
-  :config
-  (global-blamer-mode 1))
+  (blamer-min-offset 0)
+  :hook (prog-mode . blamer-mode))
 
 (provide 'paimacs-git)
