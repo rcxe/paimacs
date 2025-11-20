@@ -5,8 +5,8 @@ wip newbie-friendly emacs distribution
 ### screenshots
 
 <div>
-  <img src="./github/welcome.png" width=47.5%>
-  <img src="./github/c.png"  width=47.5%>
+  <img src="./.github/welcome.png" width=47.5%>
+  <img src="./.github/c.png"  width=47.5%>
 </div>
 
 ### todo
