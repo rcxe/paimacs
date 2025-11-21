@@ -30,7 +30,7 @@
     (message
      (concat
       (propertize "\n" 'face '(:height 0.4))
-      " [C-x C-f] Open  [C-x C-s] Save  [C-s] Search  [M-x] Command   "
+      1      " [C-x C-f] Open  [C-x C-s] Save  [C-s] Search  [M-x] Command   "
       (propertize "[C-g]   Cancel" 'face 'bold)
       "\n"
       " M-g: Line/Error/Mark/Outline   M-s: Grep/Ripgrep/Line/Focus   "

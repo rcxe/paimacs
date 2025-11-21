@@ -8,10 +8,10 @@
   :hook (prog-mode . dtrt-indent-mode))
 
 (use-package indent-bars
-	:ensure t
-	:custom
-	(indent-bars-treesit-support t)
-	:hook (prog-mode . indent-bars-mode))
+  :ensure t
+  :custom
+  (indent-bars-treesit-support t)
+  :hook (prog-mode . indent-bars-mode))
 
 (electric-pair-mode 0)
 

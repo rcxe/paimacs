@@ -5,3 +5,5 @@
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (setq gc-cons-threshold (* 50 1000 1000))
 (setq read-process-output-max (* 1024 1024))
+(setq site-run-file nil)
+(setq load-prefer-newer t)

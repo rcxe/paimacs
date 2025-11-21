@@ -3,6 +3,24 @@
 (require 'json)
 (require 'subr-x)
 
+(defun paimacs--expand-mode (mode)
+  "Return (a-ts-mode a-mode) for MODE='a, but keep only existing functions."
+  (let* ((base (symbol-name mode))
+         (modes (list
+                 (intern (format "%s-ts-mode" base))
+                 (intern (format "%s-mode" base)))))
+    (cl-remove-if-not #'fboundp modes)))
+
+;;;###autoload
+(defun presence! (mode icon-url tooltip)
+  "Register presence icons and tooltips for MODE and its -ts/-mode variants."
+  (dolist (m (paimacs--expand-mode mode))
+    (add-to-list 'paimacs-presence-custom-icons
+                 (cons m icon-url))
+    (add-to-list 'paimacs-presence-custom-tooltips
+                 (cons m tooltip))))
+
+;;;###autoload
 (defun tenor (id)
   "Return a Tenor GIF URL for ID."
   (concat "https://c.tenor.com/" id "/tenor.gif"))
@@ -34,7 +52,6 @@
     (zig-mode . ,(tenor "mzFM-IgyzkUAAAAd"))
     (python-mode . ,(tenor "-Uq63LSsIXMAAAAd"))
     (python-ts-mode . ,(tenor "-Uq63LSsIXMAAAAd"))
-    (nix-ts-mode . ,(tenor "NHalSD_FxNUAAAAd"))
     (sh-mode . ,(tenor "_YaK4h2W9yIAAAAd"))
     (bash-ts-mode . ,(tenor "_YaK4h2W9yIAAAAd"))
     (json-mode . "https://media.discordapp.net/stickers/1435384365017333900.gif")
@@ -58,7 +75,6 @@
     (emacs-lisp-mode . "*beep*")
     (typescript-mode . "*beep*")
     (typescript-ts-mode . "*beep*")
-	(nix-ts-mode . "🙂‍↔️")
     (tsx-ts-mode . "Ahoy!! We're all in the Moon♡")
     (c-mode . "💻🦋")
     (c-ts-mode . "💻🦋")

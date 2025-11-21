@@ -527,79 +527,6 @@ function is a convenience wrapper used by `describe-package-1'."
     (set-face 'org-verse                               'nano-face-faded)
     (set-face 'org-warning                            'nano-face-popout)))
 
-
-(defun nano-theme--mu4e ()
-  "Derive mu4e faces from nano faces."
-  (with-eval-after-load 'mu4e
-    (set-face 'mu4e-attach-number-face                'nano-face-strong)
-    (set-face 'mu4e-cited-1-face                       'nano-face-faded)
-    (set-face 'mu4e-cited-2-face                       'nano-face-faded)
-    (set-face 'mu4e-cited-3-face                       'nano-face-faded)
-    (set-face 'mu4e-cited-4-face                       'nano-face-faded)
-    (set-face 'mu4e-cited-5-face                       'nano-face-faded)
-    (set-face 'mu4e-cited-6-face                       'nano-face-faded)
-    (set-face 'mu4e-cited-7-face                       'nano-face-faded)
-    (set-face 'mu4e-compose-header-face                'nano-face-faded)
-    (set-face 'mu4e-compose-separator-face             'nano-face-faded)
-    (set-face 'mu4e-contact-face                     'nano-face-salient)
-    (set-face 'mu4e-context-face                       'nano-face-faded)
-    (set-face 'mu4e-draft-face                         'nano-face-faded)
-    (set-face 'mu4e-flagged-face                      'nano-face-popout)
-    (set-face 'mu4e-footer-face                        'nano-face-faded)
-    (set-face 'mu4e-forwarded-face                   'nano-face-default)
-    (set-face 'mu4e-header-face                      'nano-face-default)
-    (set-face 'mu4e-header-highlight-face                      'hl-line)
-    (set-face 'mu4e-header-key-face                   'nano-face-strong)
-    (set-face 'mu4e-header-marks-face                  'nano-face-faded)
-    (set-face 'mu4e-header-title-face                 'nano-face-strong)
-    (set-face 'mu4e-header-value-face                'nano-face-default)
-    (set-face 'mu4e-highlight-face                    'nano-face-popout)
-    (set-face 'mu4e-link-face                        'nano-face-salient)
-    (set-face 'mu4e-modeline-face                      'nano-face-faded)
-    (set-face 'mu4e-moved-face                         'nano-face-faded)
-    (set-face 'mu4e-ok-face                            'nano-face-faded)
-    (set-face 'mu4e-region-code                        'nano-face-faded)
-    (set-face 'mu4e-replied-face                     'nano-face-default)
-    (set-face 'mu4e-special-header-value-face        'nano-face-default)
-    (set-face 'mu4e-system-face                        'nano-face-faded)
-    (set-face 'mu4e-title-face                        'nano-face-strong)
-    (set-face 'mu4e-trashed-face                       'nano-face-faded)
-    (set-face 'mu4e-unread-face                       'nano-face-strong)
-    ;;(set-face-attribute 'mu4e-unread-face nil :weight 'regular)
-    (set-face 'mu4e-url-number-face                    'nano-face-faded)
-    (set-face 'mu4e-view-body-face                   'nano-face-default)
-    (set-face 'mu4e-warning-face                      'nano-face-popout)))
-
-
-(defun nano-theme--elfeed ()
-  "Derive elfeed faces from nano faces."
-  (with-eval-after-load 'elfeed
-    (set-face 'elfeed-log-date-face                    'nano-face-faded)
-    (set-face 'elfeed-log-info-level-face            'nano-face-default)
-    (set-face 'elfeed-log-debug-level-face           'nano-face-default)
-    (set-face 'elfeed-log-warn-level-face             'nano-face-popout)
-    (set-face 'elfeed-log-error-level-face            'nano-face-popout)
-    (set-face 'elfeed-search-tag-face                  'nano-face-faded)
-    (set-face 'elfeed-search-date-face                 'nano-face-faded)
-    (set-face 'elfeed-search-feed-face               'nano-face-salient)
-    (set-face 'elfeed-search-filter-face               'nano-face-faded)
-    (set-face 'elfeed-search-last-update-face        'nano-face-salient)
-    (set-face 'elfeed-search-title-face              'nano-face-default)
-    (set-face 'elfeed-search-tag-face                  'nano-face-faded)
-    (set-face 'elfeed-search-unread-count-face        'nano-face-strong)
-    (set-face 'elfeed-search-unread-title-face        'nano-face-strong)))
-
-(defun nano-theme--deft ()
-  "Derive deft faces from nano faces."
-  (with-eval-after-load 'deft
-    (set-face 'deft-filter-string-error-face         'nano-face-popout)
-    (set-face 'deft-filter-string-face              'nano-face-default)
-    (set-face 'deft-header-face                     'nano-face-salient)
-    (set-face 'deft-separator-face                    'nano-face-faded)
-    (set-face 'deft-summary-face                      'nano-face-faded)
-    (set-face 'deft-time-face                       'nano-face-salient)
-    (set-face 'deft-title-face                       'nano-face-strong)))
-
 (defun nano-theme--rst ()
   "Derive rst faces from nano faces."
   (with-eval-after-load 'rst
@@ -620,7 +547,6 @@ function is a convenience wrapper used by `describe-package-1'."
     (set-face 'rst-literal                           'nano-face-salient)
     (set-face 'rst-reference                         'nano-face-salient)
     (set-face 'rst-transition                        'nano-face-default)))
-
 
 (defun nano-theme--markdown ()
   "Derive markdown faces from nano faces."
@@ -668,90 +594,6 @@ function is a convenience wrapper used by `describe-package-1'."
     (set-face 'markdown-table-face                   'nano-face-default)
     (set-face 'markdown-url-face                     'nano-face-salient)))
 
-
-(defun nano-theme--ivy ()
-  "Derive ivy faces from nano faces."
-  (with-eval-after-load 'ivy
-    (set-face 'ivy-action                              'nano-face-faded)
-    (set-face 'ivy-completions-annotations             'nano-face-faded)
-    (set-face 'ivy-confirm-face                        'nano-face-faded)
-    (set-face 'ivy-current-match    '(nano-face-strong nano-face-subtle))
-    (set-face 'ivy-cursor                             'nano-face-strong)
-    (set-face 'ivy-grep-info                          'nano-face-strong)
-    (set-face 'ivy-grep-line-number                    'nano-face-faded)
-    (set-face 'ivy-highlight-face                     'nano-face-strong)
-    (set-face 'ivy-match-required-face                 'nano-face-faded)
-    (set-face 'ivy-minibuffer-match-face-1             'nano-face-faded)
-    (set-face 'ivy-minibuffer-match-face-2             'nano-face-faded)
-    (set-face 'ivy-minibuffer-match-face-3             'nano-face-faded)
-    (set-face 'ivy-minibuffer-match-face-4             'nano-face-faded)
-    (set-face 'ivy-minibuffer-match-highlight         'nano-face-strong)
-    (set-face 'ivy-modified-buffer                    'nano-face-popout)
-    (set-face 'ivy-modified-outside-buffer            'nano-face-strong)
-    (set-face 'ivy-org                                 'nano-face-faded)
-    (set-face 'ivy-prompt-match                        'nano-face-faded)
-    (set-face 'ivy-remote                            'nano-face-default)
-    (set-face 'ivy-separator                           'nano-face-faded)
-    (set-face 'ivy-subdir                              'nano-face-faded)
-    (set-face 'ivy-virtual                             'nano-face-faded)
-    (set-face 'ivy-yanked-word                         'nano-face-faded)))
-
-(defun nano-theme--helm ()
-  "Derive helm faces from nano faces."
-  (with-eval-after-load 'helm
-    (set-face 'helm-selection                '(nano-face-strong nano-face-subtle))
-    (set-face 'helm-match                                       'nano-face-strong)
-    (set-face 'helm-source-header                              'nano-face-salient)
-    (set-face 'helm-visible-mark                                'nano-face-strong)))
-
-(defun nano-theme--helm-swoop ()
-  "Derive helm faces from nano faces."
-  (with-eval-after-load 'helm-swoop
-    (set-face 'helm-swoop-target-line-face   '(nano-face-strong nano-face-subtle))))
-
-(defun nano-theme--helm-occur ()
-  "Derive helm faces from nano faces."
-  (with-eval-after-load 'helm-occur
-    (set-face 'helm-moccur-buffer                               'nano-face-strong)))
-
-(defun nano-theme--helm-ff ()
-  "Derive helm faces from nano faces."
-  (with-eval-after-load 'helm-ff
-    (set-face 'helm-ff-file                                      'nano-face-faded)
-    (set-face 'helm-ff-prefix                                   'nano-face-strong)
-    (set-face 'helm-ff-dotted-directory                          'nano-face-faded)
-    (set-face 'helm-ff-directory                                'nano-face-strong)
-    (set-face 'helm-ff-executable                               'nano-face-popout)))
-
-(defun nano-theme--helm-grep ()
-  "Derive helm faces from nano faces."
-  (with-eval-after-load 'helm-grep
-    (set-face 'helm-grep-match                                  'nano-face-strong)
-    (set-face 'helm-grep-file                                    'nano-face-faded)
-    (set-face 'helm-grep-lineno                                  'nano-face-faded)
-    (set-face 'helm-grep-finish                                'nano-face-default)))
-
-(defun nano-theme--company ()
-  "Derive company tooltip window from nano faces."
-  (with-eval-after-load 'company
-    (set-face 'company-tooltip-selection                   '(nano-face-strong nano-face-subtle))
-    (set-face-attribute 'company-tooltip-selection nil :background nano-color-popout)
-    
-    (set-face 'company-tooltip                                               'nano-face-subtle)
-
-    (set-face 'company-scrollbar-fg                                          'nano-face-faded)
-    (set-face-attribute 'company-scrollbar-fg nil :background nano-color-foreground)
-    
-    (set-face 'company-scrollbar-bg                                          'nano-face-default)
-    (set-face-attribute 'company-scrollbar-bg nil :background nano-color-faded)
-
-    (set-face 'company-tooltip-common                                        'nano-face-faded)
-    (set-face 'company-tooltip-common-selection            '(nano-face-strong nano-face-subtle))
-    (set-face-attribute 'company-tooltip-common-selection nil :background nano-color-popout)
-    
-    (set-face 'company-tooltip-annotation                                    'nano-face-default)
-    (set-face 'company-tooltip-annotation-selection        '(nano-face-strong nano-face-subtle))))
-
 (defun nano-theme--corfu ()
   "Apply Nano theme colors to Corfu faces."
   (custom-set-faces
@@ -798,21 +640,11 @@ function is a convenience wrapper used by `describe-package-1'."
   (nano-theme--calendar)
   (nano-theme--agenda)
   (nano-theme--org)
-  (nano-theme--mu4e)
-  (nano-theme--elfeed)
-  (nano-theme--deft)
   (nano-theme--rst)
   (nano-theme--markdown)
-  (nano-theme--ivy)
-  (nano-theme--helm)
-  (nano-theme--helm-swoop)
-  (nano-theme--helm-occur)
-  (nano-theme--helm-ff)
-  (nano-theme--helm-grep)
   (nano-theme--hl-line)
   (nano-theme--corfu)
-  (nano-theme--flymake)
-  (nano-theme--company))
+  (nano-theme--flymake))
 
 (defun nano-refresh-theme ()
   "Convenience function which refreshes the nano-theme.

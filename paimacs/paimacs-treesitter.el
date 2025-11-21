@@ -7,7 +7,7 @@
   (global-treesit-auto-mode))
 
 (use-package nix-ts-mode
- :ensure t
- :mode "\\.nix\\'")
+  :ensure t
+  :mode "\\.nix\\'")
 
 (provide 'paimacs-treesitter)
