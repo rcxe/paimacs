@@ -3,10 +3,10 @@
   (font-size 18))
 
 (paimacs! editor
-	(indent-style 'tabs)
-	(tab-width 4)
-	(line-numbers 'relative)
-	(auto-format t))
+  (indent-style 'tabs)
+  (tab-width 4)
+  (line-numbers 'relative)
+  (auto-format t))
 
 (theme! catppuccin-mocha
   (frame-background-mode 'dark)
