@@ -47,11 +47,4 @@
     ('nil
      (global-display-line-numbers-mode -1))))
 
-;;;###autoload
-(defun paimacs-apply-settings ()
-  (interactive)
-  (paimacs-apply-theme)
-  (paimacs-apply-indent-settings)
-  (paimacs-apply-line-numbers))
-
 (provide 'paimacs-appearance)

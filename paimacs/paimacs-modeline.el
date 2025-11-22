@@ -26,7 +26,6 @@
       (setq output (concat "…/" output)))
     output))
 
-;; -------------------------------------------------------------------
 (defun paimacs-modeline-compose (status name primary secondary)
   "Compose a string with provided information"
   (let* ((char-width    (window-font-width nil 'header-line))
@@ -62,7 +61,6 @@
             (propertize right 'face `(:inherit nano-face-header-default
                                                :foreground ,nano-color-faded)))))
 
-;; ---------------------------------------------------------------------
 (setq Info-use-header-line nil)
 (defun paimacs-modeline-info-breadcrumbs ()
   (let ((nodes (Info-toc-nodes Info-current-file))
@@ -103,7 +101,6 @@
                                     ")")
                             ""))
 
-;; ---------------------------------------------------------------------
 (defun paimacs-modeline-term-mode-p ()
   (derived-mode-p 'term-mode))
 
@@ -117,7 +114,6 @@
                             (shorten-directory default-directory 32)))
 
 
-;; ---------------------------------------------------------------------
 (defun paimacs-modeline-nano-help-mode-p ()
   (derived-mode-p 'nano-help-mode))
 
@@ -127,7 +123,6 @@
                             "(help)"
                             ""))
 
-;; ---------------------------------------------------------------------
 (defun paimacs-modeline-docview-mode-p ()
   (derived-mode-p 'doc-view-mode))
 
@@ -149,7 +144,6 @@
              ")" )
      page-number)))
 
-;; ---------------------------------------------------------------------
 (defun paimacs-modeline-pdf-view-mode-p ()
   (derived-mode-p 'pdf-view-mode))
 
@@ -171,14 +165,12 @@
              ")" )
      page-number)))
 
-;; ---------------------------------------------------------------------
 (defun buffer-menu-mode-header-line ()
   (face-remap-add-relative
    'header-line `(:background ,(face-background 'nano-face-subtle))))
 (add-hook 'Buffer-menu-mode-hook
           #'buffer-menu-mode-header-line)
 
-;; ---------------------------------------------------------------------
 (defun paimacs-modeline-completion-list-mode-p ()
   (derived-mode-p 'completion-list-mode))
 
@@ -189,28 +181,7 @@
 
     (paimacs-modeline-compose (paimacs-modeline-status)
                               buffer-name "" position)))
-;; ---------------------------------------------------------------------
-(with-eval-after-load 'deft
-  (defun deft-print-header ()
-    (force-mode-line-update)
-    (widget-insert "\n")))
 
-(defun paimacs-modeline-deft-mode-p ()
-  (derived-mode-p 'deft-mode))
-
-(defun paimacs-modeline-deft-mode ()
-  (let ((prefix " DEFT ")
-        (primary "Notes")
-        (filter  (if deft-filter-regexp
-                     (deft-whole-filter-regexp) "<filter>"))
-        (matches (if deft-filter-regexp
-                     (format "%d matches" (length deft-current-files))
-                   (format "%d notes" (length deft-all-files)))))
-    (paimacs-modeline-compose " DEFT "
-                              primary filter matches)))
-
-
-;; ---
 (defun paimacs-modeline-project-name ()
   "Return the current project name, if any."
   (when-let ((project (project-current)))
@@ -227,13 +198,11 @@
   "Return a string with Flymake diagnostics count."
   (when (bound-and-true-p flymake-mode)
     (let ((err 0) (warn 0) (note 0))
-      ;; Count diagnostics from all backends
       (dolist (diag (flymake-diagnostics))
         (pcase (flymake-diagnostic-type diag)
           (:error (cl-incf err))
           (:warning (cl-incf warn))
           (:note (cl-incf note))))
-      ;; Only show if there are any diagnostics
       (when (> (+ err warn note) 0)
         (let ((status ""))
           (when (> err 0)
@@ -250,7 +219,6 @@
                                              'face 'success))))
           status)))))
 
-;; ---------------------------------------------------------------------
 (defun paimacs-modeline-prog-mode-p ()
   (derived-mode-p 'prog-mode))
 
@@ -274,50 +242,46 @@
      (concat (if project (concat "[" project "] ") "")
              position))))
 
-;; ---------------------------------------------------------------------
 (defun paimacs-modeline-status ()
   "Return buffer status: read-only (RO), modified (**) or read-write (RW)"
-  
   (let ((read-only   buffer-read-only)
         (modified    (and buffer-file-name (buffer-modified-p))))
     (cond (modified  "**") (read-only "RO") (t "RW"))))
 
-;; ---------------------------------------------------------------------
 (defun paimacs-modeline ()
-  "Install a header line whose content is dependend on the major mode"
+  "Install a header line whose content is dependent on the major mode"
   (interactive)
   (setq-default header-line-format
                 '((:eval
-                   (cond ((paimacs-modeline-prog-mode-p)            (paimacs-modeline-default-mode))
-                         ((paimacs-modeline-info-mode-p)            (paimacs-modeline-info-mode))
-                         ((paimacs-modeline-term-mode-p)            (paimacs-modeline-term-mode))
-                         ((paimacs-modeline-vterm-mode-p)           (paimacs-modeline-term-mode))
-                         ((paimacs-modeline-text-mode-p)            (paimacs-modeline-default-mode))
-                         ((paimacs-modeline-pdf-view-mode-p)        (paimacs-modeline-pdf-view-mode))
-                         ((paimacs-modeline-docview-mode-p)         (paimacs-modeline-docview-mode))
-                         ((paimacs-modeline-completion-list-mode-p) (paimacs-modeline-completion-list-mode))
-                         ((paimacs-modeline-nano-help-mode-p)       (paimacs-modeline-nano-help-mode))
-                         (t                                      (paimacs-modeline-default-mode)))))))
+                   (unless (and (boundp 'no-mode-line) no-mode-line)
+                     (cond ((paimacs-modeline-prog-mode-p)            (paimacs-modeline-default-mode))
+                           ((paimacs-modeline-info-mode-p)            (paimacs-modeline-info-mode))
+                           ((paimacs-modeline-term-mode-p)            (paimacs-modeline-term-mode))
+                           ((paimacs-modeline-vterm-mode-p)           (paimacs-modeline-term-mode))
+                           ((paimacs-modeline-text-mode-p)            (paimacs-modeline-default-mode))
+                           ((paimacs-modeline-pdf-view-mode-p)        (paimacs-modeline-pdf-view-mode))
+                           ((paimacs-modeline-docview-mode-p)         (paimacs-modeline-docview-mode))
+                           ((paimacs-modeline-completion-list-mode-p) (paimacs-modeline-completion-list-mode))
+                           ((paimacs-modeline-nano-help-mode-p)       (paimacs-modeline-nano-help-mode))
+                           (t                                      (paimacs-modeline-default-mode))))))))
 
-;; ---------------------------------------------------------------------
 (defun paimacs-modeline-update-windows ()
   "Modify the mode line depending on the presence of a window
 below or a buffer local variable 'no-mode-line'."
   (dolist (window (window-list))
     (with-selected-window window
       (with-current-buffer (window-buffer window)
-        (if (or (not (boundp 'no-mode-line)) (not no-mode-line))
-            (set-window-parameter window 'mode-line-format
-                                  (cond ((not mode-line-format) 'none)
-                                        ((one-window-p t 'visible) (list ""))
-                                        ((eq (window-in-direction 'below) (minibuffer-window)) (list ""))
-                                        ((not (window-in-direction 'below)) (list ""))
-                                        (t 'none))))))))
+        (unless (and (boundp 'no-mode-line) no-mode-line)
+          (set-window-parameter window 'mode-line-format
+                                (cond ((not mode-line-format) 'none)
+                                      ((one-window-p t 'visible) (list ""))
+                                      ((eq (window-in-direction 'below) (minibuffer-window)) (list ""))
+                                      ((not (window-in-direction 'below)) (list ""))
+                                      (t 'none))))))))
 
 (add-hook 'window-configuration-change-hook 'paimacs-modeline-update-windows)
 
 (setq eshell-status-in-modeline nil)
-;; (setq-default mode-line-format (list "%-"))
 (setq-default mode-line-format "")
 (paimacs-modeline)
 

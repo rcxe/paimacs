@@ -89,6 +89,9 @@ Defaults to nil."
                 :family     (face-attribute 'nano-face-variable-pitch :family)
                 :height     (face-attribute 'nano-face-variable-pitch :height))
       (set-face 'variable-pitch                     'nano-face-default))
+  (set-face-attribute
+	'child-frame-border nil
+	:background (face-background 'nano-face-subtle))
 
   (set-face-attribute 'cursor nil
                       :background (face-foreground 'nano-face-default))
@@ -612,12 +615,12 @@ function is a convenience wrapper used by `describe-package-1'."
         (warning-color nano-color-popout)
         (echo-fg       nano-color-faded))
     (custom-set-faces
-     `(flymake-error        ((t (:underline (:color ,error-color) :background nil))))
-     `(flymake-error-echo   ((t (:foreground ,echo-fg :background nil))))
-     `(sideline-flymake-error ((t (:foreground ,error-color :background nil))))
-     `(flymake-warning      ((t (:underline (:color ,warning-color) :background nil))))
-     `(flymake-warning-echo ((t (:foreground ,echo-fg :background nil))))
-     `(sideline-flymake-warning ((t (:foreground ,warning-color :background nil)))))))
+     `(flymake-error        ((t (:underline (:color ,error-color) :background "unspecified"))))
+     `(flymake-error-echo   ((t (:foreground ,echo-fg :background "unspecified"))))
+     `(sideline-flymake-error ((t (:foreground ,error-color :background "unspecified"))))
+     `(flymake-warning      ((t (:underline (:color ,warning-color) :background "unspecified"))))
+     `(flymake-warning-echo ((t (:foreground ,echo-fg :background "unspecified"))))
+     `(sideline-flymake-warning ((t (:foreground ,warning-color :background "unspecified")))))))
 
 (defun nano-theme ()
   "Derive many, many faces from the core nano faces."

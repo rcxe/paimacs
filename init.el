@@ -20,6 +20,7 @@
              (expand-file-name "nano" user-emacs-directory)))
 
 (require 'paimacs-settings)
+(require 'paimacs-lib)
 (require 'paimacs-package-manager)
 (require 'paimacs-nano)
 (require 'paimacs-layout)

@@ -22,6 +22,13 @@ wip newbie-friendly emacs distribution
 git clone https://github.com/rcxe/paimacs ~/.emacs.d
 ```
 
+### commands
+
+#### utilities
+
+- `M-x paimacs-info` - about this distribution
+- `M-x paimacs-open-user-config` - open user.el
+
 ### keybindings
 
 #### quick help

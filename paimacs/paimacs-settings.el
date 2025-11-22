@@ -20,19 +20,6 @@
             `(setq ,sym ,value)))
         settings)))
 
-;;;###autoload
-(defun paimacs-reload-settings ()
-  (interactive)
-  (let ((user-config (expand-file-name "user.el" user-emacs-directory)))
-    (when (file-exists-p user-config)
-      (load user-config)
-      (paimacs-apply-settings))))
-
-;;;###autoload
-(defun paimacs-find-user-settings ()
-  (interactive)
-  (find-file (expand-file-name "user.el" user-emacs-directory)))
-
 (defgroup paimacs nil
   "Customization group for Paimacs."
   :group 'emacs
