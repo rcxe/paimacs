@@ -43,6 +43,7 @@
 (require 'paimacs-formatter)
 (require 'paimacs-branding)
 (require 'paimacs-utilities)
+(require 'paimacs-web)
 
 (add-hook 'emacs-startup-hook
           (lambda () (paimacs-reload-settings)))
