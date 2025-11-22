@@ -45,6 +45,7 @@
 (require 'paimacs-branding)
 (require 'paimacs-utilities)
 (require 'paimacs-web)
+;; (require 'paimacs-updater) ;; WIP
 
 (add-hook 'emacs-startup-hook
           (lambda () (paimacs-reload-settings)))

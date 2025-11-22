@@ -21,13 +21,13 @@
         settings)))
 
 (defgroup paimacs nil
-  "Customization group for Paimacs."
+  "Customization group for Pλimacs."
   :group 'emacs
   :prefix "paimacs-")
 
 ;;; UI
 (defgroup paimacs-ui nil
-  "UI configuration for Paimacs."
+  "UI configuration for Pλimacs."
   :group 'paimacs)
 
 (defcustom paimacs-ui-font-family "JetBrains Mono"
@@ -68,5 +68,31 @@
   "Whether to format code on save."
   :type 'boolean
   :group 'paimacs-editor)
+
+;;; Auto-updating mechanism
+(defgroup paimacs-update nil
+  "Auto-update settings for Pλimacs."
+  :group 'paimacs)
+
+(defcustom paimacs-update-check-on-startup t
+  "Whether to check for updates on startup."
+  :type 'boolean
+  :group 'paimacs-update)
+
+(defcustom paimacs-update-auto-update nil
+  "Whether to automatically update without prompting.
+If nil, will prompt user before updating."
+  :type 'boolean
+  :group 'paimacs-update)
+
+(defcustom paimacs-update-branch "main"
+  "Git branch to track for updates."
+  :type 'string
+  :group 'paimacs-update)
+
+(defcustom paimacs-update-remote-url "https://github.com/rcxe/paimacs.git"
+  "Git remote to fetch updates from."
+  :type 'string
+  :group 'paimacs-update)
 
 (provide 'paimacs-settings)

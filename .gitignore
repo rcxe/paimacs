@@ -9,3 +9,5 @@ transient
 .cache
 elpa
 elisp-autofmt-cache
+user.el
+.last-update-check

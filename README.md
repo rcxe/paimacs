@@ -15,6 +15,7 @@ wip newbie-friendly emacs distribution
 - [ ] `expand-region`
 - [ ] `rainbow-delimiters`
 - [ ] auto formatting
+- [ ] self-updating
 
 ### installation
 
